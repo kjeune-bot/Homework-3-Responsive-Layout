@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Layout Assignment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="site-wrapper">
+    <header class="site-header">
+      <h1>My Redesigned Homework 2 Page</h1>
+      <p>Adapting seamlessly across 320px, 768px, and 1200px viewports.</p>
+    </header>
+
+    <main class="main-content">
+      <aside class="sidebar">
+        <h2>Navigation / Sidebar</h2>
+        <ul>
+          <li><a href="#section1">About</a></li>
+          <li><a href="#section2">Projects</a></li>
+          <li><a href="#section3">Contact</a></li>
+        </ul>
+      </aside>
+
+      <section class="content-grid">
+        <article class="card">
+          <h3>Card One</h3>
+          <p>This content block reorganizes based on the screen width using CSS Grid.</p>
+        </article>
+        <article class="card">
+          <h3>Card Two</h3>
+          <p>No horizontal scrolling and zero overlapping elements at any viewport size.</p>
+        </article>
+        <article class="card">
+          <h3>Card Three</h3>
+          <p>Tested cleanly using browser developer tools and device emulation.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Responsive Layout Project</p>
+    </footer>
+  </div>
+</body>
+</html>
+style.css
+/* --- Global Resets & Mobile First Base (320px default) --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f4f4f9;
+}
+
+.site-wrapper {
+  width: 100%;
+  padding: 1rem;
+}
+
+.site-header {
+  background: #2563eb;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Mobile Layout: Single Column Stack */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar, .card {
+  background: white;
+  padding: 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.sidebar ul {
+  list-style: none;
+  margin-top: 0.5rem;
+}
+
+.sidebar li a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.content-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.site-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+/* --- Tablet Viewport (768px and up) --- */
+@media (min-width: 768px) {
+  .site-wrapper {
+    padding: 2rem;
+  }
+
+  /* Shift main content into a 2-column layout (Sidebar + Grid) */
+  .main-content {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Make the cards inside grid display 2 columns */
+  .content-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- Desktop Viewport (1200px and up) --- */
+@media (min-width: 1200px) {
+  .site-wrapper {
+    max-width: 1200px;
+    margin: 0 auto; /* Centers content and prevents lines from stretching too wide */
+  }
+
+  /* Expand to a 3-column card layout on large screens */
+  .content-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
